@@ -1,0 +1,3 @@
+	Budget App:-
+
+ 	The project is all about a budget app.It mainly consist of two modules as a super user(admin) and user.privillages provided to user's is to create user details, login module, view options, Add expense, category creation, view list, sorting expense, can sort user's date wise expense, sort the datewise on category base. Main privillage provided to super user is its overall controlling.

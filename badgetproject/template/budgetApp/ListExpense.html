@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends 'budgetApp/base.html' %}
+{% block body_block %}
+<div class="container">
+    <h1>Expenses List</h1>
+    <table  class="table table-dark">
+        <tr>
+            <td>User Name</td>
+            <td>Category</td>
+            <td>Expense Name</td>
+            <td>Amount</td>
+            <td>Date</td>
+        </tr>
+        {% for lst in list %}
+        <tr>
+            <td>{{lst.user}}</td>
+            <td>{{lst.category}}</td>
+            <td>{{lst.expense_name}}</td>
+            <td>{{lst.amount}}</td>
+            <td>{{lst.date}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

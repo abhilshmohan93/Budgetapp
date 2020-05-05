@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% extends 'budgetApp/base.html' %}
+{% block body_block %}
+<div class="container">
+    <h1>Select Date</h1>
+<form method="post" id="refrm">
+    {% csrf_token %}
+    <table class="table table-dark">
+            {% for field in form %}
+        <tr>
+            <td>{{field.label_tag}}</td>
+            <td>{{field}}</td>
+        </tr>
+        {% endfor %}
+     <tr>
+         <td> <button type="submit" class="btn btn-primary">Submit</button></td>
+        </tr>
+    </table>
+</form>
+</div>
+<form method="post">
+<div class="container">
+    <h1>Datewise Sum</h1>
+    {% csrf_token %}
+    <table class="table table-dark">
+           <tr>
+            <td>Category</td>
+            <td>Total Amount</td>
+        </tr>
+            {% for data in qs %}
+        <tr>
+            <td>{{data.category__category_name}}</td>
+            <td>{{data.categorysum}}</td>
+        </tr>
+        {% endfor %}
+     <tr>
+        </tr>
+    </table>
+</div>
+</form>
+    <div class="col-md-6">
+      <canvas id="myChartBar"></canvas>
+    </div>
+</div>
+{% endblock %}

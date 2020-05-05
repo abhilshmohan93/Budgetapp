@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Budget Management System</title>
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+  </head>
+    <body id="page-top">
+      <div id="wrapper">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+          <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'home' %}">
+            <div class="sidebar-brand-icon rotate-n-15">
+              <i class="fas fa-laugh-wink"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">Budget Manager</div>
+          </a>
+          <hr class="sidebar-divider my-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'home' %}">
+              <i class="fas fa-fw fa-tachometer-alt"></i>
+              <span>Home</span></a>
+          </li>
+          <hr class="sidebar-divider">
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+              <i class="fas fa-fw fa-cog"></i>
+              <span>Expenses</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Content:</h6>
+                <a class="collapse-item" href="{% url 'add_category' %}">Add Category</a>
+                <a class="collapse-item" href="{% url 'create_expense' %}">Create Expenses</a>
+                <a class="collapse-item" href="{% url 'list_expense' %}">List Expenses</a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+              <i class="fas fa-fw fa-wrench"></i>
+              <span>Other Details</span>
+            </a>
+            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">SUM:</h6>
+                <a class="collapse-item" href="{% url 'date_sum' %}">Sum By Date</a>
+                <a class="collapse-item" href="{% url 'cat_sum' %}">Sum By Category</a>
+              </div>
+            </div>
+          </li>
+          <hr class="sidebar-divider">
+        </ul>
+        <div id="content-wrapper" class="d-flex flex-column">
+          <div id="content">
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+              <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                <i class="fa fa-bars"></i>
+              </button>
+              <ul class="navbar-nav ml-auto">
+                <div class="topbar-divider d-none d-sm-block"></div>
+                <li class="nav-item dropdown no-arrow">
+                  <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">  {{user}}</span>
+                    <img class="img-profile rounded-circle" src="https://images.all-free-download.com/images/graphicthumb/canoe_water_nature_221611.jpg">
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="{% url 'register_user' %}">
+                      <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                      Register
+                    </a>
+                    <a class="dropdown-item" href="{% url 'login_user' %}">
+                      <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                      Login
+                    </a>
+                     <a class="dropdown-item" href="{% url 'logout_user' %}">
+                      <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                      Logout
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+            <div class="container-fluid">
+    <div class="jumbotron" align="center">
+        <p> <h1> Hi {{user}} !!</h1><br/>
+              <h2> Welcome to Budget Management System</h2></p>
+    </div>
+              <div class="jumbotron">
+                <div style="margin-left:180px;">
+              <a href="{% url 'create_expense' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Add Expense</a>
+              <a href="{% url 'list_expense' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">List Expense</a>
+                <a href="{% url 'date_sum' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Sum By Date</a>
+                <a href="{% url 'cat_sum' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Sum By Category</a>
+                </div>
+              </div>
+              <div class="row">
+              </div>
+              <div class="row">
+              </div>
+            </div>
+          </div>
+<!--            <footer class="sticky-footer bg-white" style="margin-top: auto;">-->
+<!--              <div class="container my-auto">-->
+<!--                <div class="copyright text-center my-auto">-->
+<!--                  <span>Copyright &copy; Budget Manager 2020</span>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </footer>-->
+        </div>
+      </div>
+      <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+      </a>
+      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+              <a class="btn btn-primary" href="#">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+      <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+      <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+      <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+      <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+      <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+    </body>
+</html>

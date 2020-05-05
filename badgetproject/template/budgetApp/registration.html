@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends 'budgetApp/BaseLoginReg.html' %}
+{% block body_block %}
+<div class="container">
+    <h1>Register Here</h1>
+<form method="post" id="refrm">
+    {% csrf_token %}
+    <table class="table table-dark">
+            {% for field in form %}
+        <tr>
+            <td>{{field.label_tag}}</td>
+            <td>{{field}}</td>
+        </tr>
+        {% endfor %}
+     <tr>
+         <td>
+        <button type="button" class="btn btn-primary" onclick="save()">Register</button></td>
+     </tr>
+    </table>
+    Already Registered??<a href="{% url 'login_user' %}">Login</a>
+</form>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    function save(){
+        $.ajax({
+        type: "POST",
+        url: "{% url 'register_user' %}",
+        data: $('#refrm').serialize(),
+        success: function (data){
+        if(data.status==200){
+            console.log("data saved");
+            swal("user successfully registered")
+            .then((value) => {
+            window.location.href='Login'
+            });
+         }
+        else
+         {
+            swal("not saved","error");
+         }
+         }
+        });
+}
+</script>
+{% endblock %}
